@@ -37,7 +37,7 @@ function run_all_systems(mode)
             cfg = feval(config_fn);
 
             % Set output directory
-            out_dir = fullfile(base, '..', 'outputs', config_fn);
+            out_dir = fullfile(base, 'outputs', config_fn);
             if ~exist(out_dir, 'dir'), mkdir(out_dir); end
             cfg.output_dir = out_dir;
 

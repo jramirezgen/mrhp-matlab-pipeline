@@ -2,21 +2,22 @@
 % Runs the generic pipeline for one or all organism configurations.
 %
 % Usage:
-%   matlab -batch "run('workflows/mrhp_universal_platform/scripts/run_all.m')"
+%   cd mrhp-matlab-pipeline
+%   matlab -batch "run_all"           % runs all 3 organisms
 %
 % Or select a specific organism:
-%   MRHP_ORGANISM=shewanella matlab -batch "run('...')"
-%   MRHP_ORGANISM=ecoli      matlab -batch "run('...')"
-%   MRHP_ORGANISM=acido      matlab -batch "run('...')"
+%   MRHP_ORGANISM=shewanella matlab -batch "run_all"
+%   MRHP_ORGANISM=ecoli      matlab -batch "run_all"
+%   MRHP_ORGANISM=acido      matlab -batch "run_all"
 
 fprintf('\n╔══════════════════════════════════════════════════╗\n');
 fprintf(  '║     MRHP Universal Platform — Master Runner      ║\n');
 fprintf(  '╚══════════════════════════════════════════════════╝\n\n');
 
 %% Setup paths
-base_dir  = fileparts(fileparts(mfilename('fullpath')));  % scripts/../
-engine_dir = fullfile(base_dir, 'scripts', 'engine');
-config_dir = fullfile(base_dir, 'scripts', 'configs');
+base_dir   = fileparts(mfilename('fullpath'));  % repo root
+engine_dir = fullfile(base_dir, 'engine');
+config_dir = fullfile(base_dir, 'configs');
 addpath(engine_dir);
 addpath(config_dir);
 
@@ -110,7 +111,9 @@ end
 fprintf('╚══════════════════════════════════════════════════╝\n');
 
 %% Write master metadata
-meta_path = fullfile(base_dir, 'metadata', 'master_run_info.json');
+meta_dir = fullfile(base_dir, 'metadata');
+if ~exist(meta_dir, 'dir'), mkdir(meta_dir); end
+meta_path = fullfile(meta_dir, 'master_run_info.json');
 fid = fopen(meta_path, 'w');
 if fid > 0
     fprintf(fid, '{\n');
