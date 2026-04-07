@@ -1,0 +1,19 @@
+ode_idx	ode_name	gem_cpd_id	formula	compartment	note
+1	YE_eff	cpd_YE_eff	LUMPED	c0	Effective yeast extract (lumped carbon source)
+2	Pyr	cpd00020_c0	C3H3O3	c0	Pyruvate
+3	AcCoA	cpd00022_c0	C23H34N7O17P3S	c0	Acetyl-CoA
+4	NADH	cpd00004_c0	C21H27N7O14P2	c0	NADH
+5	NAD	cpd00003_c0	C21H26N7O14P2	c0	NAD+
+6	AD	cpd_AD	C40H23N7Na4O13S4	c0	Direct Blue 71 (azo dye)
+7	DAN	cpd_DAN	C10H10N2	c0	1,4-diaminonaphthalene
+8	J_acid	cpd_Jac	C10H7NO4S	c0	J-acid (2-amino-5-naphthol-7-sulfonate)
+9	Bisulfonate	cpd_bisulf	C10H7NO6S2	c0	3-amino-1,5-naphthalenedisulfonate
+10	Bisulfonate_ext	cpd_bisulf_ext	C10H7NO6S2	e0	Bisulfonate (effluxed, extracellular)
+11	DHN	cpd_DHN	C10H8O2	c0	1,2-dihydroxynaphthalene
+12	Salicylate	cpd00283_c0	C7H5O3	c0	Salicylate (2-hydroxybenzoate)
+13	Catechol	cpd00332_c0	C6H6O2	c0	Catechol (1,2-dihydroxybenzene)
+14	Protocatechuate	cpd00090_c0	C7H5O4	c0	Protocatechuate (3,4-dihydroxybenzoate)
+15	OxoAdipate	cpd00313_c0	C6H6O5	c0	3-oxoadipate (beta-ketoadipate)
+16	CO2	cpd00011_c0	CO2	c0	Carbon dioxide
+17	SucCoA	cpd00078_c0	C25H35N7O19P3S	c0	Succinyl-CoA
+18	Biomass	cpd_biomass	LUMPED	c0	Cell biomass (g/L equivalent)

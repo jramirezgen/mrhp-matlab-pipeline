@@ -1,0 +1,17 @@
+ode_idx	ode_name	gem_cpd_id	formula	compartment	note
+1	YE_eff	cpd_YE_eff	LUMPED	c0	Effective yeast extract (lumped carbon source)
+2	Pyr	cpd00020_c0	C3H3O3	c0	Pyruvate
+3	AcCoA	cpd00022_c0	C23H34N7O17P3S	c0	Acetyl-CoA
+4	NADH	cpd00004_c0	C21H27N7O14P2	c0	NADH
+5	NAD	cpd00003_c0	C21H26N7O14P2	c0	NAD+
+6	RC	cpd_RC	C32H22N6Na2O6S2	c0	Congo Red (azo dye)
+7	DANS	cpd_DANS	C10H10N2O3S	c0	3,4-diamino-1-naphthalenesulfonate
+8	Benzidine	cpd_benz	C12H12N2	c0	Benzidine (4,4'-diaminobiphenyl)
+9	Benzidine_ext	cpd_benz_ext	C12H12N2	e0	Benzidine (effluxed, extracellular)
+10	DHN	cpd_DHN	C10H8O2	c0	1,2-dihydroxynaphthalene
+11	Salicylate	cpd00283_c0	C7H5O3	c0	Salicylate (2-hydroxybenzoate)
+12	Catechol	cpd00332_c0	C6H6O2	c0	Catechol (1,2-dihydroxybenzene)
+13	OxoAdipate	cpd00313_c0	C6H6O5	c0	3-oxoadipate (beta-ketoadipate)
+14	CO2	cpd00011_c0	CO2	c0	Carbon dioxide
+15	SucCoA	cpd00078_c0	C25H35N7O19P3S	c0	Succinyl-CoA
+16	Biomass	cpd_biomass	LUMPED	c0	Cell biomass (g/L equivalent)

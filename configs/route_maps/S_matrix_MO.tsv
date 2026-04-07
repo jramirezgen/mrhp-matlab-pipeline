@@ -1,0 +1,14 @@
+species\reaction	v1_ye_uptake	v2_pdh	v3_tca	v4_resp	v5_azo	v6_frag_dmpd	v7_frag_sulfa	v8_hub_cat	v9_reint	v10_suc_recycle	v11_growth
+cpd_YE_eff	-1	0	0	0	0	0	0	0	0	0	-1
+cpd00020_c0	2	-1	0	0	0	0	0	0	0	1	0
+cpd00022_c0	0	1	-1	0	0	0	0	0	1	0	0
+cpd00004_c0	2	1	3	-1	-2	0	0	0	0	0	0
+cpd00003_c0	-2	-1	-3	1	2	0	0	0	0	0	0
+cpd_MO	0	0	0	0	-1	0	0	0	0	0	0
+cpd_DMPD	0	0	0	0	1	-1	0	0	0	0	0
+cpd_sulfa	0	0	0	0	1	0	-1	0	0	0	0
+cpd00332_c0	0	0	0	0	0	1	1	-1	0	0	0
+cpd00313_c0	0	0	0	0	0	0	0	1	-1	0	0
+cpd00011_c0	0	1	2	0	0	0	0	0	0	0	0
+cpd00078_c0	0	0	1	0	0	0	0	0	1	-1	0
+cpd_biomass	0	0	0	0	0	0	0	0	0	0	1

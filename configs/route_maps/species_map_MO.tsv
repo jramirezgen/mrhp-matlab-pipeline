@@ -1,0 +1,14 @@
+ode_idx	ode_name	gem_cpd_id	formula	compartment	note
+1	YE_eff	cpd_YE_eff	LUMPED	c0	Effective yeast extract (lumped carbon source)
+2	Pyr	cpd00020_c0	C3H3O3	c0	Pyruvate
+3	AcCoA	cpd00022_c0	C23H34N7O17P3S	c0	Acetyl-CoA
+4	NADH	cpd00004_c0	C21H27N7O14P2	c0	NADH
+5	NAD	cpd00003_c0	C21H26N7O14P2	c0	NAD+
+6	MO	cpd_MO	C14H14N3NaO3S	c0	Methyl Orange (azo dye)
+7	DMPD	cpd_DMPD	C8H12N2	c0	N,N-dimethyl-p-phenylenediamine
+8	Sulfanilate	cpd_sulfa	C6H7NO3S	c0	4-aminobenzenesulfonate (sulfanilate)
+9	Catechol	cpd00332_c0	C6H6O2	c0	Catechol (1,2-dihydroxybenzene)
+10	OxoAdipate	cpd00313_c0	C6H6O5	c0	3-oxoadipate (beta-ketoadipate)
+11	CO2	cpd00011_c0	CO2	c0	Carbon dioxide
+12	SucCoA	cpd00078_c0	C25H35N7O19P3S	c0	Succinyl-CoA
+13	Biomass	cpd_biomass	LUMPED	c0	Cell biomass (g/L equivalent)

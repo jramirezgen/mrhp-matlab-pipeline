@@ -1,0 +1,14 @@
+ode_rxn_idx	ode_rxn_name	equation	gem_rxn_id	gene	ec	evidence	note
+1	v_ye_uptake	YE_eff + 2 NAD → 2 Pyr + 2 NADH	R_rxn00154_c0;R_rxn00148_c0	multiple	2.7.1.40;1.2.4.1	SUPPORTED	Lumped glycolysis + YE hydrolysis
+2	v_pdh	Pyr + NAD + CoA → AcCoA + CO2 + NADH	R_rxn00154_c0	aceE/aceF/lpd	1.2.4.1	SUPPORTED	Pyruvate dehydrogenase complex
+3	v_tca	AcCoA + 3 NAD → 2 CO2 + 3 NADH + SucCoA	R_rxn00256_c0;R_rxn00285_c0	gltA/acnB/icd/sucAB	2.3.3.1;4.2.1.3;1.1.1.42	SUPPORTED	Lumped TCA cycle
+4	v_resp	NADH → NAD	R_rxn08971_c0	cymA/mtrCAB	1.6.5.3	SUPPORTED	Respiratory chain + EET
+5	v_azo	RC + NADH → DANS + Benzidine + NAD	INF_RC_01;INF_RC_02	azoR+cymA	1.7.1.6	SUPPORTED	CymA-mediated periplasmic azoreduction
+6	v_efflux	Benzidine → Benzidine_ext	INF_RC_efflux	acrAB-tolC	-	SUPPORTED	AcrAB-TolC efflux; benzidine not degraded
+7	v_frag_dans	DANS → DHN	INF_RC_03	ndoA/ahpF (E2650_00480)	1.14.12.12	SUPPORTED	Rieske dioxygenation; ahpF +6.55x in RC
+8	v_frag_dhn	DHN → Salicylate	INF_RC_ring	aldH (E2650_02445/15085)	1.2.1.65	SUPPORTED	Ring fission
+9	v_frag_sal	Salicylate → Catechol	INF_RC_sal	salA (E2650_18145)	1.14.13.1	SUPPORTED	Salicylate 1-monooxygenase
+10	v_hub_cat	Catechol → OxoAdipate	INF_RC_ortho	catA (EJGNCN_02850)	1.13.11.1	SUPPORTED	Catechol ortho-cleavage
+11	v_reint	OxoAdipate → AcCoA + SucCoA	R_rxn01918_c0	pcaI/J;pcaF	2.8.3.6;2.3.1.174	SUPPORTED	CoA-transferase + thiolase
+12	v_suc_recycle	SucCoA → Pyr	R_rxn00285_c0	sucCD	6.2.1.5	SUPPORTED	Succinyl-CoA recycling via TCA
+13	v_growth	YE_eff → Biomass	LUMPED	multiple	-	SUPPORTED	Monod growth with carrying capacity
