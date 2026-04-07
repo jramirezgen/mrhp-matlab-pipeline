@@ -1,5 +1,19 @@
 # Changelog
 
+## [4.1.0] — 2026-04-07
+
+### Added
+- `inputs/` directory with all experimental data for full reproducibility
+- Shewanella: decolorization kinetics (~4670 rows), RT-qPCR (6 genes × 4 conditions), expression parameter fits, DB71 reaction catalog (2930 reactions)
+- E. coli: L-fucose titers (12 strains, Xia 2025)
+- Acidithiobacillus: Fe²⁺ oxidation timeseries (CA/EA), differentially expressed genes
+- GEM placeholder directories with instructions per organism
+- Updated README with inputs documentation
+
+### Fixed
+- `run_all.m`: corrected base_dir resolution (was using double fileparts for scripts/ layout)
+- `run_all_systems.m`: corrected out_dir path (removed `..` prefix)
+
 ## [4.0.0] — 2026-04-07
 
 ### Added

@@ -1,0 +1,11 @@
+mode	gene	log2FC_EA_vs_CA	direction	padj	gene_id	function	source
+CA_vs_EA	cyc2	-1.57	DOWN	<0.001	AFE_RS14265	Outer membrane Fe2+ oxidizer	Wang_2024_Table2
+CA_vs_EA	rus	-1.21	DOWN	<0.001	AFE_RS14415	Periplasmic blue copper (rusticyanin hub)	Wang_2024_Table2
+CA_vs_EA	cydB	-1.54	DOWN	<0.001	AFE_RS09520	Cytochrome bd ubiquinol oxidase subunit II	Wang_2024_Table2
+CA_vs_EA	nuoL	-1.44	DOWN	<0.001	AFE_RS10055	NADH dehydrogenase complex I subunit L	Wang_2024_Table2
+CA_vs_EA	tolC	3.32	UP	<0.001	novel0441	Outer membrane efflux / putative EET	Wang_2024_Table2
+CA_vs_EA	pilA	2.50	UP	<0.001	novel0233	Type IV pilin (conductive pili)	Wang_2024_Table2
+CA_vs_EA	tonB	2.20	UP	<0.001	AFE_RS10585	Energy transducer (TonB-dependent)	Wang_2024_Table2
+CA_vs_EA	ferredoxin	1.57	UP	<0.01	novel0005	Redox mediator	Wang_2024_Table2
+CA_vs_EA	glycosylT	2.80	UP	<0.001	AFE_RS01070	Glycosyltransferase (EPS synthesis for biofilm)	Wang_2024_Table2
+CA_vs_EA	coxBA	-0.85	DOWN	<0.05	AFE_RS09515	Cytochrome c oxidase aa3 (terminal)	Wang_2024_Table2

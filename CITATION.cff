@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
 title: "MRHP — Multiscale Route Hypothesis Platform (MATLAB Pipeline)"
-version: "4.0.0"
+version: "4.1.0"
 date-released: "2026-04-07"
 license: MIT
 repository-code: "https://github.com/jramirezgen/mrhp-matlab-pipeline"

@@ -1,0 +1,13 @@
+strain	description	gene_copies_CBGW	gene_copies_wbgL	gene_copies_afcA	knockouts	overexpression	titer_shake_flask_gL	titer_bioreactor_gL	bioreactor_time_h	productivity_g_L_h	OD600_bioreactor	source
+FUC1	Base pathway	1	1	1	nudD,lacZ,fucIK,wcaJ	none	2.25	NA	NA	NA	NA	Xia_2025_Table1
+FUC2	3:1:1 ratio	3	1	1	nudD,lacZ,fucIK,wcaJ	none	4.27	NA	NA	NA	NA	Xia_2025_Fig2
+FUC3	4:1:1 ratio	4	1	1	nudD,lacZ,fucIK,wcaJ	none	4.58	NA	NA	NA	NA	Xia_2025_Fig2
+FUC4	3:2:1 ratio	3	2	1	nudD,lacZ,fucIK,wcaJ	none	5.00	NA	NA	NA	NA	Xia_2025_Fig2
+FUC6	4:2:1 ratio	4	2	1	nudD,lacZ,fucIK,wcaJ	none	5.76	NA	NA	NA	NA	Xia_2025_Fig2
+FUC8	4:3:1 ratio	4	3	1	nudD,lacZ,fucIK,wcaJ	none	6.74	NA	NA	NA	NA	Xia_2025_Fig2
+FUC12	4:3:2 ratio (optimal)	4	3	2	nudD,lacZ,fucIK,wcaJ	none	7.52	63.77	138	0.46	32.06	Xia_2025_Fig3
+FUC12N	FUC12 + ndk	4	3	2	nudD,lacZ,fucIK,wcaJ	ndk	7.87	73.82	114	0.65	NA	Xia_2025_Fig4
+FUC12NM	FUC12N + mdfA KO	4	3	2	nudD,lacZ,fucIK,wcaJ,mdfA	ndk	NA	77.13	114	0.68	NA	Xia_2025_Fig5
+FUC12NS	FUC12N + setA KO	4	3	2	nudD,lacZ,fucIK,wcaJ,setA	ndk	NA	75.50	114	0.66	NA	Xia_2025_Fig5
+FUC12NSM	FUC12N + double KO	4	3	2	nudD,lacZ,fucIK,wcaJ,mdfA,setA	ndk	NA	80.14	114	0.70	NA	Xia_2025_Fig5
+FUC12NSM-pG	Final optimized	4	3	2	nudD,lacZ,fucIK,wcaJ,mdfA,setA,pfkA	ndk,glpK_G913A	11.87	91.90	78	1.18	205.40	Xia_2025_Fig6
