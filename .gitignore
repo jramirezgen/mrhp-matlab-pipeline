@@ -1,0 +1,25 @@
+# MATLAB generated
+*.asv
+*.mex*
+*.mlapp
+slprj/
+codegen/
+
+# Pipeline outputs (regenerated at runtime)
+outputs/
+
+# Temporary / cache
+*.mat
+*.fig
+*.log
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

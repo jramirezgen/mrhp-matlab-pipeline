@@ -1,0 +1,20 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Force LF for source files
+*.m text eol=lf
+*.tsv text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.cff text eol=lf
+
+# Binary
+*.png binary
+*.jpg binary
+*.pdf binary
+*.fig binary
+*.mat binary
