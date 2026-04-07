@@ -1,13 +1,13 @@
 # MRHP — Multiscale Route Hypothesis Platform
 
-**v4.0.0** · MATLAB R2025b · MIT License
+**v4.1.0** · MATLAB R2025b · MIT License
 
 A universal MATLAB pipeline for multiscale metabolic analysis: from ODE-based metabolic kinetics through phenotypic bridge coupling to absolute gene expression dynamics (deterministic + stochastic).
 
 ## Certified Organisms
 
 | Organism | Conditions | Figures | Runtime | Bridge R² |
-|----------|-----------|---------|---------|----------|
+|----------|-----------|---------|---------|-----------|
 | *Shewanella xiamenensis* LC6 | MO, RC, AD | 12 | ~106 s | 0.993 |
 | *E. coli* (fucose) | FUC1–FUC12NpG | 13 | ~197 s | 0.916 |
 | *Acidithiobacillus ferrooxidans* | CA, EA | 12 | ~51 s | 0.991 |
@@ -81,6 +81,20 @@ mrhp-matlab-pipeline/
 │       ├── route_map_{MO,RC,AD}.tsv
 │       ├── species_map_{MO,RC,AD}.tsv
 │       └── S_matrix_{MO,RC,AD}.tsv
+├── inputs/                        % Self-contained experimental data
+│   ├── shewanella/
+│   │   ├── gem/                   % Place LC6 SBML XML here
+│   │   ├── decolorization_kinetics.csv  % Curated kinetics (~4670 rows)
+│   │   ├── rtqpcr_absolute_processed.tsv% Absolute RT-qPCR (6 genes × 4 cond.)
+│   │   ├── expression_parameter_fits.tsv% ktx, degradation, ktl fits
+│   │   └── reaction_catalog.tsv         % DB71 full reaction catalog
+│   ├── ecoli_fucose/
+│   │   ├── gem/                   % Place E. coli BL21 SBML XML here
+│   │   └── ecoli_fucose_titers.tsv      % L-fucose production (12 strains)
+│   └── acidithiobacillus/
+│       ├── gem/                   % Place A. ferrooxidans SBML XML here
+│       ├── acidithiobacillus_timeseries.tsv  % Fe²⁺ oxidation (CA/EA)
+│       └── acidithiobacillus_degs.tsv        % Differentially expressed genes
 ├── tests/
 │   └── run_statistical_audit.m    % Comprehensive validation
 ├── run_all_systems.m              % Master entry point
@@ -89,6 +103,42 @@ mrhp-matlab-pipeline/
 ├── CITATION.cff
 └── LICENSE
 ```
+
+## Inputs (Self-Contained Data)
+
+The `inputs/` directory contains all experimental data needed for full reproducibility.
+No external files are required — clone and run.
+
+### Shewanella xiamenensis LC6
+
+| File | Description | Rows |
+|------|-------------|------|
+| `decolorization_kinetics.csv` | Curated decolorization timecourses (MO, RC, DB/AD, ZZ) with OD600 | ~4670 |
+| `rtqpcr_absolute_processed.tsv` | Absolute RT-qPCR: 6 genes × 4 conditions × 3 replicates | 72 |
+| `expression_parameter_fits.tsv` | Fitted ktx, β_m, β_p, ktl per gene | 7 |
+| `reaction_catalog.tsv` | DB71 full reaction catalog with omics evidence | 2930 |
+| `gem/` | **Place SBML XML here** (see `PLACE_GEM_HERE.md`) | — |
+
+### E. coli BL21(DE3) — L-Fucose
+
+| File | Description | Rows |
+|------|-------------|------|
+| `ecoli_fucose_titers.tsv` | L-fucose titers for 12 engineered strains (Xia et al. 2025) | 13 |
+| `gem/` | **Place SBML XML here** (e.g., iML1515) | — |
+
+### Acidithiobacillus ferrooxidans ATCC 23270
+
+| File | Description | Rows |
+|------|-------------|------|
+| `acidithiobacillus_timeseries.tsv` | Fe²⁺ oxidation timecourse CA/EA (Wang et al. 2024) | 15 |
+| `acidithiobacillus_degs.tsv` | Differentially expressed genes CA vs EA | 11 |
+| `gem/` | **Place SBML XML here** (e.g., iAF692) | — |
+
+### GEM Files
+
+GEM XML files are not included due to size but are referenced by the pipeline.
+Place the appropriate SBML Level 3 FBC v2 `.xml` file in each organism's `gem/` folder.
+See the `PLACE_GEM_HERE.md` in each `gem/` directory for details.
 
 ## Figure Types
 
@@ -130,7 +180,7 @@ These ensure every ODE species and reaction traces back to a curated GEM reconst
 @software{ramirez2026mrhp,
   author  = {Ramirez-Bautista, Josue},
   title   = {MRHP: Multiscale Route Hypothesis Platform},
-  version = {4.0.0},
+  version = {4.1.0},
   year    = {2026},
   url     = {https://github.com/jramirezgen/mrhp-matlab-pipeline}
 }
