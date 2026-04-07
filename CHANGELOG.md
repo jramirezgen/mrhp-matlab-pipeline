@@ -1,5 +1,31 @@
 # Changelog
 
+## [5.0.0] — 2026-04-07
+
+### Added
+- `mrhp.m` — Unified entry point with two explicit modes: `decipher` and `validate`
+- **Decipher mode**: BFS/DFS route discovery from GEM TSV exports
+  - `engine/decipher_routes.m` — Core graph-search engine, generates 3-5 ranked hypotheses
+  - `engine/load_gem_tsv.m` — GEM parser (reactions.tsv, metabolites.tsv, S_matrix.tsv)
+  - `engine/validate_route_gaps.m` — Connectivity checker (cofactors excluded)
+  - `engine/build_hypothesis_config.m` — Converts hypotheses to validate-ready configs
+- Per-hypothesis output: route_map.tsv, species_map.tsv, S_matrix.tsv, config_hypothesis.m, rate_fn_template.m
+- Gap analysis TSV and decipher_report.md per run
+- **Validate mode**: Accepts config from decipher output, .m file, or function handle
+- Full inputParser with `help mrhp` documentation for all arguments
+- `tests/test_decipher_mode.m` — Ground-truth test using MO Shewanella route maps
+- README: Usage Modes section with argument tables and workflow guide
+
+### Changed
+- README updated with v5.0.0 dual-mode documentation
+- CITATION.cff bumped to v5.0.0
+
+### Unchanged
+- All 11 existing engine files (no modifications)
+- All 3 organism configs (Shewanella, E. coli, Acidithiobacillus)
+- All inputs and route_maps
+- run_all.m, run_all_systems.m (legacy entry points preserved)
+
 ## [4.1.0] — 2026-04-07
 
 ### Added

@@ -1,8 +1,10 @@
 # MRHP — Multiscale Route Hypothesis Platform
 
-**v4.1.0** · MATLAB R2025b · MIT License
+**v5.0.0** · MATLAB R2025b · MIT License
 
 A universal MATLAB pipeline for multiscale metabolic analysis: from ODE-based metabolic kinetics through phenotypic bridge coupling to absolute gene expression dynamics (deterministic + stochastic).
+
+**v5.0.0** introduces two explicit modes: **Decipher** (route discovery via BFS/DFS on GEM networks) and **Validate** (full 13-phase hypothesis validation).
 
 ## Certified Organisms
 
@@ -45,24 +47,101 @@ Where Φ(t) is the metabolic activity signal extracted from ODE dynamics, and (�
 ## Quick Start
 
 ```matlab
-% Run all organisms (quick mode)
+% Show full help with all arguments
+mrhp('help')
+
+% === MODE 1: DECIPHER — Discover metabolic routes ===
+mrhp('decipher', ...
+     'gem_dir',    'inputs/shewanella/gem_tsv/', ...
+     'target',     'cpd_MO', ...
+     'mode',       'degradation', ...
+     'seeds',      {'cpd_YE_eff'}, ...
+     'max_hypotheses', 5, ...
+     'output_dir', 'outputs/decipher_MO')
+
+% === MODE 2: VALIDATE — From decipher output ===
+mrhp('validate', ...
+     'config', 'outputs/decipher_MO/hypotheses/hypothesis_1', ...
+     'experimental_data', 'inputs/shewanella/', ...
+     'output_dir', 'outputs/validate_MO')
+
+% === MODE 2: VALIDATE — From existing config ===
+mrhp('validate', ...
+     'config', @config_shewanella_lc6, ...
+     'output_dir', 'outputs/validate_shewanella')
+
+% Legacy entry points (still supported)
 run_all_systems('quick')
-
-% Run all organisms (full mode with all figures)
 run_all_systems('full')
+```
 
-% Run a single organism
-addpath('engine', 'configs');
-cfg = config_shewanella_lc6();
-run_pipeline_generic(cfg);
+## Usage Modes
+
+### Mode 1: Decipher — Route Discovery
+
+Discovers metabolic routes from a GEM via BFS/DFS graph search. Generates ranked hypotheses with complete ModelSEED-compatible route maps.
+
+| Argument | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `'gem_dir'` | **Yes** | — | Path to GEM TSV directory (reactions.tsv, metabolites.tsv, S_matrix.tsv) |
+| `'target'` | **Yes** | — | Target metabolite ID (e.g. `'cpd_MO'`, `'cpd00020_c0'`) |
+| `'output_dir'` | **Yes** | — | Output directory for results |
+| `'mode'` | No | `'degradation'` | `'degradation'` (target→central) or `'production'` (seeds→target) |
+| `'seeds'` | No | Central metabolism | Cell array of seed metabolite IDs |
+| `'max_hypotheses'` | No | `5` | Maximum hypotheses to generate (3-5 recommended) |
+| `'max_depth'` | No | `15` | Maximum BFS search depth |
+| `'organism'` | No | `'Unknown'` | Organism name for labeling |
+| `'condition'` | No | `'COND1'` | Condition key |
+
+**Output structure:**
+```
+output_dir/
+├── hypotheses/hypothesis_N/    % Per-hypothesis files
+│   ├── route_map.tsv           % 8 cols: rxn_idx, name, equation, gem_id, gene, ec, evidence, note
+│   ├── species_map.tsv         % 6 cols: idx, name, gem_cpd_id, formula, compartment, note
+│   ├── S_matrix.tsv            % Stoichiometric matrix
+│   ├── config_hypothesis.m     % Ready for validate mode
+│   └── rate_fn_template.m      % Michaelis-Menten template (editable)
+├── ranking_summary.tsv         % Comparative ranking
+├── gap_analysis.tsv            % Gap detection per hypothesis
+└── decipher_report.md          % Full report
+```
+
+### Mode 2: Validate — Hypothesis Validation
+
+Runs the full 13-phase pipeline: ODE, bridge, expression, stochastic, scores, 13 figures.
+
+| Argument | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `'config'` | **Yes** | — | Config source: `@function_handle`, `'path/to/config.m'`, or `'path/to/hyp_dir/'` |
+| `'output_dir'` | **Yes** | — | Output directory for results |
+| `'experimental_data'` | No | — | Path to experimental data directory (RT-qPCR, kinetics) |
+| `'pipeline_mode'` | No | `'full'` | `'full'`, `'quick'` (skip grid), or `'figures_only'` |
+| `'organism'` | No | — | Override organism name |
+| `'condition'` | No | — | Override condition key |
+
+**Without experimental data:** Scores are computed with C3=0.5 (neutral magnitude).
+
+### Typical Workflow
+
+```
+1. Export GEM → 3 TSV files (reactions.tsv, metabolites.tsv, S_matrix.tsv)
+2. mrhp('decipher', ...) → generates hypotheses with route_maps
+3. Review & edit config_hypothesis.m and rate_fn_template.m
+4. mrhp('validate', ...) → full validation with scores and figures
 ```
 
 ## Directory Structure
 
 ```
 mrhp-matlab-pipeline/
+├── mrhp.m                         % ★ Entry point: mrhp('decipher'|'validate'|'help')
 ├── engine/                        % Core pipeline functions
 │   ├── run_pipeline_generic.m     % 13-phase orchestrator
+│   ├── decipher_routes.m          % ★ BFS/DFS route discovery
+│   ├── load_gem_tsv.m             % ★ GEM TSV parser
+│   ├── build_hypothesis_config.m  % ★ Hypothesis → cfg converter
+│   ├── validate_route_gaps.m      % ★ Gap connectivity checker
 │   ├── figure_generation_generic.m% 13 figure types
 │   ├── solve_ode_generic.m        % ODE metabolic solver
 │   ├── extract_phi_generic.m      % Φ signal extraction
@@ -96,7 +175,8 @@ mrhp-matlab-pipeline/
 │       ├── acidithiobacillus_timeseries.tsv  % Fe²⁺ oxidation (CA/EA)
 │       └── acidithiobacillus_degs.tsv        % Differentially expressed genes
 ├── tests/
-│   └── run_statistical_audit.m    % Comprehensive validation
+│   ├── run_statistical_audit.m    % Comprehensive validation
+│   └── test_decipher_mode.m       % Decipher mode test (MO ground truth)
 ├── run_all_systems.m              % Master entry point
 ├── run_all.m                      % Environment-based runner
 ├── CHANGELOG.md
@@ -180,7 +260,7 @@ These ensure every ODE species and reaction traces back to a curated GEM reconst
 @software{ramirez2026mrhp,
   author  = {Ramirez-Bautista, Josue},
   title   = {MRHP: Multiscale Route Hypothesis Platform},
-  version = {4.1.0},
+  version = {5.0.0},
   year    = {2026},
   url     = {https://github.com/jramirezgen/mrhp-matlab-pipeline}
 }
